@@ -1,0 +1,138 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - SoulMatch Matrimony</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top"
+    style="background:linear-gradient(90deg, #424242,#FFB74D);">
+    <div class="container">
+      <a class="navbar-brand fw-bold " href="/" style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register/">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-sm  mx-2 mt-1 ms-5" href="/login/">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- main -->
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Login to your account</h5>
+            <form id="loginForm" method="POST">
+              {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label">Username or Email</label>
+                <input  name="login" type="text" id="login" class="form-control" required placeholder="Username or Email"  autocomplete="off">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" required placeholder="Password" autocomplete="new-password">
+              </div>
+
+              <button class="btn btn-primary w-100" type="submit">Login</button>
+            </form>
+             <div id="msg"></div>
+            <div id="loginMsg" class="mt-3"></div>
+            <div id="loginMsg" class="mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-light pt-5" style="background-color: #111;">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Brand Info -->
+        <div class="col-md-4">
+          <h4 class="fw-bold text-danger mb-3">SoulMatch</h4>
+          <p class=" text-light">
+            Find your perfect partner with verified profiles, smart matching, and complete privacy.
+            Join thousands who have found love on <span class="text-danger">SoulMatch</span>.
+          </p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-2">
+          <h5 class="text-danger mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Home</a></li>
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Success Stories</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="col-md-3">
+          <h5 class="text-light mb-3">Our Services</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Matchmaking</a></li>
+            <li><a href="#" class="footer-link">Profile Verification</a></li>
+            <li><a href="#" class="footer-link">Premium Membership</a></li>
+            <li><a href="#" class="footer-link">Privacy & Safety</a></li>
+            <li><a href="#" class="footer-link">Mobile App</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-md-3">
+          <h5 class="text-danger mb-3">Subscribe</h5>
+          <p class="text-light">Get the latest matchmaking tips & success stories.</p>
+          <form method="POST" action="{% url 'subscribe' %}">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="email" name="email" class="form-control rounded-0" placeholder="Enter your email" required>
+              <button class="btn btn-danger rounded-0">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4" />
+
+      <div class="text-center text-muted pb-3">
+        <p class="mb-0 text-light">
+          © <span id="year"></span> <span class="text-danger">SoulMatch</span>. All Rights Reserved. |
+          Developed by Umang Tiwari ❤️
+        </p>
+      </div>
+    </div>
+  </footer> 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/login.js' %}"></script>
+
+</html>

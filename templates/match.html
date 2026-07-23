@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Matches</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #ff4d6d;
+        }
+
+        /* 🔥 HORIZONTAL SCROLL CONTAINER */
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* hide scrollbar (optional clean UI) */
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 auto;
+            width: 280px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #666;
+            margin: 3px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #ff4d6d;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #e63e5c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>💖 Your Matches</h2>
+
+    <div class="container">
+
+        {% for user in matches %}
+
+        <div class="card">
+
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}">
+            {% else %}
+            <img src="{% static 'assets/img/default.jpg' %}">
+            {% endif %}
+
+            <div class="card-body">
+                <div class="name">{{ user.fullname }}</div>
+
+                <div class="info">🎂 Age: {{ user.age }}</div>
+                <div class="info">🚻 Gender: {{ user.gender }}</div>
+                <div class="info">🏙️ City: {{ user.city }}</div>
+                <div class="info">💼 {{ user.occupation }}</div>
+                <div class="info">📝 {{ user.about }}</div>
+
+                <a href="#" class="btn">❤️ Like</a>
+
+                <a href="/start-chat/{{ user.user.id }}/" class="btn">
+    Chat
+</a>
+            </div>
+
+        </div>
+
+        {% empty %}
+        <p style="text-align:center;">No matches found 😢</p>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

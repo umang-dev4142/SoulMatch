@@ -1,0 +1,426 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoulMatch Matrimony - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+/>
+<link rel="icon" href="{% static '/assets/img/logo.png' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top" style="background:linear-gradient(90deg, #424242,#FFB74D);" >
+    <div class="container">
+      <a class="navbar-brand fw-bold " href="/" style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register/">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-sm  mx-2 mt-1 ms-5" href="/login/">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000"
+      data-bs-pause="false"> <!-- Auto scroll continues, no pause on hover -->
+
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active position-relative">
+          <img src="{% static '/assets/img/roman.jpg' %}"
+            class="d-block w-100" alt="couple" style="object-fit: cover; height: 90vh;" class="img-fluid animate-photo">
+
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
+
+          <!-- Text Center -->
+          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
+            style="max-width: 700px;">
+            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
+              Find your life partner with
+              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
+            </h1>
+            <p class="lead mb-4" style="color:#f8f8f8;">
+              Smart matches · Verified profiles · Secure & private
+            </p>
+            <div>
+              <a href="register.html" class="btn btn-lg me-2"
+                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                Create Profile
+              </a>
+              <a href="#featured" class="btn btn-lg"
+                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                Browse Profiles
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item position-relative" >
+          <img src="{% static 'assets/img/vect.jpeg' %}" class="d-block w-100" alt="couple2"
+            style="object-fit: cover; height: 90vh;" class="img-fluid animate-photo">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
+          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
+            style="max-width: 700px;">
+            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
+              Meet your perfect match on
+              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
+            </h1>
+            <p class="lead mb-4" style="color:#f8f8f8;">Trusted by thousands of happy couples</p>
+            <div>
+              <a href="register.html" class="btn btn-lg me-2"
+                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                Join Now
+              </a>
+              <a href="#featured" class="btn btn-lg"
+                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                Explore Profiles
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item position-relative" >
+          <img src="{% static 'assets/img/tezzy.jpg' %}" class="d-block w-100" alt="couple3"
+            style="object-fit: cover; height: 90vh;" class="img-fluid animate-photo">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
+          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
+            style="max-width: 700px;">
+            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
+              Your journey to love starts with
+              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
+            </h1>
+            <p class="lead mb-4" style="color:#f8f8f8;">Safe, private, and personalized matchmaking</p>
+            <div>
+              <a href="register.html" class="btn btn-lg me-2"
+                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                Get Started
+              </a>
+              <a href="#featured" class="btn btn-lg"
+                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
+                View Profiles
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+    </div>
+  </header>
+
+  <!-- hero section end -->
+ <section class="container py-5">
+  <h2 class="text-center mb-5 fw-bold display-6">
+    Why Choose <span class="text-danger">SoulMatch</span>?
+  </h2>
+
+  <div class="row g-4 text-center">
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg p-4 h-100 feature-card">
+        <div class="icon-wrapper mx-auto mb-3">
+          <i class="bi bi-person-check display-5 text-danger"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Verified Profiles</h5>
+        <p class="text-muted">
+          Every profile is verified to ensure trust and authenticity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg p-4 h-100 feature-card">
+        <div class="icon-wrapper mx-auto mb-3">
+          <i class="bi bi-heart-pulse display-5 text-danger"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Smart Matching</h5>
+        <p class="text-muted">
+          AI-based filters help you find your most compatible partner.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg p-4 h-100 feature-card">
+        <div class="icon-wrapper mx-auto mb-3">
+          <i class="bi bi-shield-lock display-5 text-danger"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Privacy First</h5>
+        <p class="text-muted">
+          Your privacy is our top priority — you control what to share.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Featured Profiles -->
+  <section class="py-5 bg-light" id="featured">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold" style="color:#e50914;">
+      Featured Profiles
+    </h2>
+
+    <div class="row g-4">
+      <!-- Profile Card 1 -->
+      <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm p-3" 
+             style="border-radius:15px; transition:0.3s;">
+          <img src="{% static 'assets/img/alex.jpg' %}"
+               class="mx-auto d-block rounded-circle shadow" 
+               alt="Profile 1" 
+               style="width:150px; height:150px; object-fit:cover;">
+          <div class="card-body">
+            <h5 class="fw-bold mt-3 mb-1">Neha Singh</h5>
+            <p class="text-muted mb-2">Software Engineer, Delhi</p>
+            <a href="#" class="btn btn-outline-danger rounded-pill px-4">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Card 2 -->
+      <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm p-3" 
+             style="border-radius:15px; transition:0.3s;">
+          <img src="{% static 'assets/img/siddrath.jpg' %}" 
+               class="mx-auto d-block rounded-circle shadow" 
+               alt="Profile 2" 
+               style="width:150px; height:150px; object-fit:cover;">
+          <div class="card-body">
+            <h5 class="fw-bold mt-3 mb-1">Priya Verma</h5>
+            <p class="text-muted mb-2">Doctor, Mumbai</p>
+            <a href="#" class="btn btn-outline-danger rounded-pill px-4">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Card 3 -->
+      <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm p-3" 
+             style="border-radius:15px; transition:0.3s;">
+          <img src="{% static 'assets/img/himansu.jpg' %}" 
+               class="mx-auto d-block rounded-circle shadow" 
+               alt="Profile 3" 
+               style="width:150px; height:150px; object-fit:cover;">
+          <div class="card-body">
+            <h5 class="fw-bold mt-3 mb-1">Ankur Tiwari</h5>
+            <p class="text-muted mb-2">Teacher, Lucknow</p>
+            <a href="#" class="btn btn-outline-danger rounded-pill px-4">View Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- priuman section for user -->
+<section class="pricing-modern py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Premium Membership Plans</h2>
+
+        <div class="pricing-wrapper">
+
+            <!-- Basic -->
+            <div class="pricing-box">
+                <h3>Basic</h3>
+                <p class="price">₹299 <span>/month</span></p>
+                <ul>
+                    <li>Unlimited Profile Views</li>
+                    <li>10 Interests Per Day</li>
+                    <li>Basic Match Suggestions</li>
+                    <li>Limited Chat Access</li>
+                </ul>
+                <a href="#" class="btn-modern">Choose Plan</a>
+            </div>
+
+            <!-- Standard -->
+            <div class="pricing-box active abc">
+                <div class="most-popular">MOST POPULAR</div>
+                <h3>Standard</h3>
+                <p class="price">₹799 <span>/3 months</span></p>
+                <ul>
+                    <li>Unlimited Profile Views</li>
+                    <li>Unlimited Interests</li>
+                    <li>Priority Match Suggestions</li>
+                    <li>Chat with 50 Profiles</li>
+                    <li>Profile Boost Weekly</li>
+                </ul>
+                <a href="#" class="btn-modern">Choose Plan</a>
+            </div>
+
+            <!-- Premium Plus -->
+            <div class="pricing-box">
+                <h3>Premium Plus</h3>
+                <p class="price">₹1499 <span>/6 months</span></p>
+                <ul>
+                    <li>Unlimited Chat</li>
+                    <li>Top Search Ranking</li>
+                    <li>Verified Priority Tag</li>
+                    <li>Spotlight 3 Times/Week</li>
+                    <li>Premium Match Recommendations</li>
+                </ul>
+                <a href="#" class="btn-modern">Choose Plan</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- romantic quide banner -->
+ <!-- Romantic Quote Banner -->
+<section class="romantic-banner d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h2 class="quote-text">
+      “Love begins with a single match… and your story starts here ❤️”
+    </h2>
+  </div>
+</section>
+
+
+<!-- work section -->
+ <section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5 display-6">
+      How <span class="text-danger">SoulMatch</span> Works
+    </h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="step-card p-4 shadow-sm rounded">
+          <div class="icon mb-3 text-danger fs-1">
+            <i class="bi bi-person-plus"></i>
+          </div>
+          <h5>1. Create Profile</h5>
+          <p class="text-muted">Sign up and tell us about yourself.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card p-4 shadow-sm rounded">
+          <div class="icon mb-3 text-danger fs-1">
+            <i class="bi bi-search-heart"></i>
+          </div>
+          <h5>2. Find Matches</h5>
+          <p class="text-muted">Browse profiles that match your interests.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card p-4 shadow-sm rounded">
+          <div class="icon mb-3 text-danger fs-1">
+            <i class="bi bi-chat-dots"></i>
+          </div>
+          <h5>3. Connect & Chat</h5>
+          <p class="text-muted">Start conversations with compatible people.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="step-card p-4 shadow-sm rounded">
+          <div class="icon mb-3 text-danger fs-1">
+            <i class="bi bi-heart-fill"></i>
+          </div>
+          <h5>4. Meet Your Soulmate</h5>
+          <p class="text-muted">Take the next step towards a happy life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- CTA -->
+  <section class=" text-white text-center py-5" style="background:linear-gradient(90deg, #424242,#FFB74D);">
+    <div class="container">
+      <h4 class="text-black">Create your profile today — it's free!</h4>
+      <a href="register.html" class="btn btn-danger mt-3">Register Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-light pt-5" style="background-color: #111;">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Brand Info -->
+      <div class="col-md-4">
+        <h4 class="fw-bold text-danger mb-3">SoulMatch</h4>
+        <p class=" text-light">
+          Find your perfect partner with verified profiles, smart matching, and complete privacy. 
+          Join thousands who have found love on <span class="text-danger">SoulMatch</span>.
+        </p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2">
+        <h5 class="text-danger mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="footer-link">Home</a></li>
+          <li><a href="#" class="footer-link">About Us</a></li>
+          <li><a href="#" class="footer-link">Success Stories</a></li>
+          <li><a href="#" class="footer-link">Contact</a></li>
+          <li><a href="#" class="footer-link">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="col-md-3">
+        <h5 class="text-light mb-3">Our Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="footer-link">Matchmaking</a></li>
+          <li><a href="#" class="footer-link">Profile Verification</a></li>
+          <li><a href="#" class="footer-link">Premium Membership</a></li>
+          <li><a href="#" class="footer-link">Privacy & Safety</a></li>
+          <li><a href="#" class="footer-link">Mobile App</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-md-3">
+        <h5 class="text-danger mb-3">Subscribe</h5>
+        <p class="text-light">Get the latest matchmaking tips & success stories.</p>
+        <form class="d-flex">
+          <input type="email" class="form-control me-2 rounded-0" placeholder="Enter your email">
+          <button class="btn btn-danger rounded-0">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <hr class="border-secondary my-4" />
+
+    <div class="text-center text-muted pb-3">
+      <p class="mb-0 text-light">
+        © <span id="year"></span> <span class="text-danger">SoulMatch</span>. All Rights Reserved. |
+        Made with ❤️ in India
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

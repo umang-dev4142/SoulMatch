@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Chats | SoulMatch</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI, sans-serif;
+        }
+
+        body{
+            background:#f4f6fb;
+            padding:20px;
+        }
+
+        .container{
+            max-width:600px;
+            margin:auto;
+        }
+
+        h2{
+            margin-bottom:20px;
+            font-size:22px;
+            font-weight:700;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .chat-card{
+            background:white;
+            border-radius:16px;
+            padding:12px 15px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,.06);
+        }
+
+        .left{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .avatar{
+            width:52px;
+            height:52px;
+            border-radius:50%;
+            object-fit:cover;
+        }
+
+        .name{
+            font-size:16px;
+            font-weight:600;
+        }
+
+        .last-msg{
+            font-size:13px;
+            color:#777;
+            max-width:200px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        .right{
+            text-align:right;
+        }
+
+        .time{
+            font-size:12px;
+            color:#999;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>💬 My Chats</h2>
+
+    {% for chat in chats %}
+
+    <a href="{% url 'chat' chat.room.id %}">
+
+        <div class="chat-card">
+
+            <!-- LEFT -->
+            <div class="left">
+
+                {% if chat.user.profile.photo %}
+                    <img src="{{ chat.user.profile.photo.url }}" class="avatar">
+                {% else %}
+                    <img src="https://via.placeholder.com/50" class="avatar">
+                {% endif %}
+
+                <div>
+
+                    <div class="name">
+                        {{ chat.user.profile.fullname }}
+                    </div>
+
+                    <div class="last-msg">
+                        {{ chat.last_message }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="right">
+
+                <div class="time">
+                    {% if chat.last_time %}
+                        {{ chat.last_time|date:"H:i" }}
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </a>
+
+    {% empty %}
+
+        <p>No chats yet.</p>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

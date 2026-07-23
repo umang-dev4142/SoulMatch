@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Likes</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.title{
+    text-align:center;
+    font-size:32px;
+    color:#ff4d6d;
+    margin-bottom:30px;
+}
+
+.likes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.like-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+    text-align:center;
+}
+
+.like-card:hover{
+    transform:translateY(-5px);
+}
+
+.avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff4d6d,#ff758f);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.username{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:15px;
+    color:#333;
+}
+
+.liked-text{
+    color:#666;
+    margin-top:8px;
+    font-size:15px;
+}
+
+.date{
+    color:#999;
+    font-size:13px;
+    margin-top:12px;
+}
+
+.btn-group{
+    margin-top:18px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:14px;
+    margin:5px;
+    transition:0.3s;
+}
+
+.like-btn{
+    background:#ff4d6d;
+    color:white;
+}
+
+.like-btn:hover{
+    transform:scale(1.05);
+}
+
+.chat-btn{
+    background:#4CAF50;
+    color:white;
+}
+
+.chat-btn:hover{
+    transform:scale(1.05);
+}
+
+.empty-box{
+    background:white;
+    padding:50px 20px;
+    text-align:center;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.empty-box h2{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+.empty-box p{
+    color:#666;
+}
+
+/* Tablet */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .title{
+        font-size:28px;
+    }
+
+    .likes-grid{
+        grid-template-columns:1fr;
+    }
+
+    .like-card{
+        padding:20px;
+    }
+
+    .avatar{
+        width:70px;
+        height:70px;
+        font-size:28px;
+    }
+
+    .username{
+        font-size:20px;
+    }
+
+}
+
+/* Small Mobile */
+
+@media(max-width:480px){
+
+    body{
+        padding:10px;
+    }
+
+    .title{
+        font-size:24px;
+    }
+
+    .like-card{
+        padding:18px;
+        border-radius:15px;
+    }
+
+    .avatar{
+        width:60px;
+        height:60px;
+        font-size:24px;
+    }
+
+    .username{
+        font-size:18px;
+    }
+
+    .liked-text{
+        font-size:14px;
+    }
+
+    .btn{
+        display:block;
+        width:100%;
+        margin:8px 0;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="title">❤️ My Likes</h1>
+
+    {% if likes %}
+
+        <div class="likes-grid">
+
+            {% for like in likes %}
+
+            <div class="like-card">
+
+                <div class="avatar">
+                    {{ like.from_user.username|first|upper }}
+                </div>
+
+                <div class="username">
+                    {{ like.from_user.username }}
+                </div>
+
+                <div class="liked-text">
+                    ❤️ Liked your profile
+                </div>
+
+                <div class="date">
+                    {{ like.created_at }}
+                </div>
+
+                
+
+                <p style="color:#ff4d6d;font-weight:bold;margin-top:10px;">
+            ❤️ Interested in you
+            </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-box">
+            <h2>😢 No Likes Yet</h2>
+            <p>Keep exploring profiles and make new connections.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

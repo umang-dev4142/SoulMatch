@@ -1,0 +1,462 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | SoulMatch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI;
+        }
+
+        body {
+            background: #e5ddd5;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .chat-header {
+            height: 60px;
+            background: #075e54;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-weight: 600;
+        }
+
+        /* CHAT BOX */
+        #chat-box {
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        /* MESSAGE */
+        .sent,
+        .received {
+            max-width: 70%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin: 8px 0;
+            position: relative;
+            word-wrap: break-word;
+            font-size: 14px;
+        }
+
+        /* SENT */
+        .sent {
+            background: #dcf8c6;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+
+        /* RECEIVED */
+        .received {
+            background: white;
+            margin-right: auto;
+            border-bottom-left-radius: 2px;
+        }
+
+        .name {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        /* TIME */
+        .time {
+            font-size: 10px;
+            color: #777;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* INPUT */
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-top: 1px solid #ddd;
+        }
+
+        #msg {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .send-btn {
+            background: #075e54;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        img.chat-img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .sent,
+        .received {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            animation: fadeIn .2s ease;
+        }
+
+        .chat-img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 12px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .action-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .message-actions {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: none;
+        }
+
+        .sent:hover .message-actions {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="chat-header">
+
+        {% if room.user1 == request.user %}
+        💬 {{ room.user2.profile.fullname }}
+        {% else %}
+        💬 {{ room.user1.profile.fullname }}
+        {% endif %}
+
+    </div>
+
+    <div id="chat-box">
+
+        {% for msg in messages %}
+
+        {% if msg.sender == request.user %}
+
+        <div class="sent">
+
+            <div class="name">You</div>
+
+            <div class="message-actions">
+
+                <button class="action-btn" onclick="editMessage({{ msg.id }}, this)"
+                    data-message="{{ msg.message|escapejs }}">
+                    ✏️
+                </button>
+
+                <button class="action-btn" onclick="deleteMessage({{ msg.id }})">
+                    🗑️
+                </button>
+
+            </div>
+
+            {% if msg.is_deleted %}
+            <i style="color:gray;">🚫 deleted</i>
+            {% else %}
+
+            {% if msg.message %}
+            {{ msg.message }}
+            {% if msg.is_edited %}
+            <small>(edited)</small>
+            {% endif %}
+            {% endif %}
+
+            {% if msg.image %}
+            <img src="{{ msg.image.url }}" class="chat-img">
+            {% endif %}
+
+            {% endif %}
+
+            <div class="time">
+                {{ msg.timestamp|date:"H:i" }}
+
+                {% if msg.sender == request.user %}
+                {% if msg.is_seen %}
+                ✓✓
+                {% else %}
+                ✓
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% else %}
+
+        <div class="received">
+
+            <div class="name">
+                {{ msg.sender.profile.fullname }}
+            </div>
+
+            {% if msg.is_deleted %}
+            <i style="color:gray;">🚫 deleted</i>
+            {% else %}
+
+            {% if msg.message %}
+            {{ msg.message }}
+            {% endif %}
+
+            {% if msg.image %}
+            <img src="{{ msg.image.url }}" class="chat-img">
+            {% endif %}
+
+            {% endif %}
+
+            <div class="time">
+                {{ msg.timestamp|date:"H:i" }}
+
+                {% if msg.sender == request.user %}
+                {% if msg.is_seen %}
+                ✓✓
+                {% else %}
+                ✓
+                {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="bottom">
+
+        <label style="font-size:20px;cursor:pointer;">
+            📷
+            <input type="file" id="imageInput" hidden>
+        </label>
+
+        <input type="text" id="msg" placeholder="Type message...">
+
+        <button class="send-btn" onclick="send()">Send</button>
+
+    </div>
+
+    <script>
+
+        let socket = new WebSocket(
+            "ws://" + window.location.host + "/ws/chat/" + "{{ room.id }}" + "/"
+        );
+
+        let userId = "{{ request.user.id }}";
+
+        /* RECEIVE MESSAGE */
+        socket.onmessage = function (e) {
+
+            let data = JSON.parse(e.data);
+
+            let div = document.createElement("div");
+
+            if (parseInt(data.user_id) === parseInt(userId)) {
+
+                div.className = "sent";
+
+                div.innerHTML = `
+            <div class="name">You</div>
+            <div>${data.message}</div>
+            <div class="time">
+                ${data.timestamp} ✓
+            </div>
+        `;
+
+            } else {
+
+                div.className = "received";
+
+                div.innerHTML = `
+            <div class="name">${data.username}</div>
+            <div>${data.message}</div>
+            <div class="time">
+                ${data.timestamp}
+            </div>
+        `;
+
+            }
+
+            document.getElementById("chat-box").appendChild(div);
+
+            scrollDown();
+        }
+
+        /* SEND */
+        function send() {
+
+            let msg = document.getElementById("msg");
+
+            if (msg.value.trim() === "") return;
+
+            socket.send(JSON.stringify({
+                message: msg.value
+            }));
+
+            msg.value = "";
+        }
+
+        /* AUTO SCROLL */
+        function scrollDown() {
+            let box = document.getElementById("chat-box");
+            box.scrollTop = box.scrollHeight;
+        }
+
+        window.onload = scrollDown;
+
+        document.getElementById("msg")
+            .addEventListener("keypress", function (e) {
+
+                if (e.key === "Enter") {
+                    send();
+                }
+
+            });
+
+        {% comment %} EDIT KE LIYE {% endcomment %}
+
+        function editMessage(messageId, btn) {
+
+            let oldMessage = btn.dataset.message;
+
+            let newMessage = prompt(
+                "Edit Message",
+                oldMessage
+            );
+
+            if (!newMessage) {
+                return;
+            }
+
+            fetch(`/edit-message/${messageId}/`, {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+
+                body: `message=${encodeURIComponent(newMessage)}`
+            })
+
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.success) {
+                        location.reload();
+                    }
+
+                });
+
+        }
+
+        {% comment %} DELETE KE LIYE {% endcomment %}
+        function deleteMessage(messageId) {
+
+            if (!confirm("Delete Message ?")) {
+                return;
+            }
+
+            fetch(`/delete-message/${messageId}/`, {
+                method: "POST",
+
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}"
+                }
+            })
+
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.success) {
+                        location.reload();
+                    }
+
+                });
+
+        }
+        document.getElementById("imageInput")
+            .addEventListener("change", function () {
+
+                let file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                let formData = new FormData();
+
+                formData.append("image", file);
+
+                fetch("/upload-image/{{ room.id }}/", {
+                    method: "POST",
+
+                    headers: {
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+
+                    body: formData
+                })
+
+                    .then(response => response.json())
+                    .then(data => {
+
+                        if (data.success) {
+                            location.reload();
+                        } else {
+                            alert("Image upload failed");
+                        }
+
+                    });
+
+            });
+
+    </script>
+
+</body>
+
+</html>
