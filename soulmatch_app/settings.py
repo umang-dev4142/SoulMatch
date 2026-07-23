@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     ".onrender.com",
-    "*",  # Deployment ke baad hata denge
+    
 ]
 
 CSRF_TRUSTED_ORIGINS = [
