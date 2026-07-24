@@ -247,14 +247,13 @@ h1, h2, .romantic-text {
 }
 
 .animate-photo {
-  opacity: 0;
-  transform: translateY(40px) scale(0.100);
-  transition: all 1.5 ease-out;
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 1.5s ease-out;
 }
-
 .animate-photo.show {
-  opacity: 0.1;
-  transform: translateY(0) scale(1);
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 body {
   padding-top: 40px;
@@ -276,6 +275,16 @@ footer i{
 footer i:hover{
     color:#dc3545;
     transform:translateY(-3px);
+}
+@media (max-width: 768px) {
+
+    .carousel-item img{
+        height: 60vh !important;
+        width: 100% !important;
+        object-fit: cover;
+        object-position: center;
+    }
+
 }
 
 
