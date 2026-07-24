@@ -276,16 +276,7 @@ footer i:hover{
     color:#dc3545;
     transform:translateY(-3px);
 }
-@media (max-width: 768px) {
 
-    .carousel-item img{
-        height: 60vh !important;
-        width: 100% !important;
-        object-fit: cover;
-        object-position: center;
-    }
-
-}
 
 
 
