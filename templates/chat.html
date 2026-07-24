@@ -282,9 +282,22 @@
 
     <script>
 
+        const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+
         let socket = new WebSocket(
-            "ws://" + window.location.host + "/ws/chat/" + "{{ room.id }}" + "/"
+            wsScheme + "://" + window.location.host + "/ws/chat/" + "{{ room.id }}/"
         );
+        socket.onopen = function () {
+            console.log("✅ WebSocket Connected");
+        };
+
+        socket.onerror = function (e) {
+            console.log("❌ WebSocket Error", e);
+        };
+
+        socket.onclose = function (e) {
+            console.log("⚠️ WebSocket Closed");
+        };
 
         let userId = "{{ request.user.id }}";
 
