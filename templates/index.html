@@ -39,90 +39,48 @@
   <!-- Hero -->
   <header>
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000"
-      data-bs-pause="false"> <!-- Auto scroll continues, no pause on hover -->
-
-      <div class="carousel-inner">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active position-relative">
-          <img src="{% static 'assets/img/roman.jpg' %}" class="d-block w-100 img-fluid animate-photo hero-img" alt="couple">
-
-          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
-
-          <!-- Text Center -->
-          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
-            style="max-width: 700px;">
-            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
-              Find your life partner with
-              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
+      data-bs-pause="false">
+      <div class="carousel-inner"> <!-- Slide 1 -->
+        <div class="carousel-item active position-relative"> <img src="{% static 'assets/img/roman.jpg' %}"
+            class="d-block w-100 hero-img" alt="couple">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+          <div class="hero-content position-absolute top-50 start-50 translate-middle text-center text-light">
+            <h1 class="hero-title fw-bold mb-3"> Find your life partner with <span class="text-danger">SoulMatch</span>
             </h1>
-            <p class="lead mb-4" style="color:#f8f8f8;">
-              Smart matches · Verified profiles · Secure & private
-            </p>
-            <div>
-              <a href="/register" class="btn btn-lg me-2"
-                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                Create Profile
-              </a>
-              <a href="/accounts/profiles/" class="btn btn-lg"
-                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                Browse Profiles
-              </a>
-            </div>
+            <p class="hero-subtitle lead mb-4"> Smart matches · Verified profiles · Secure & private </p>
+            <div class="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-3"> <a href="/register"
+                class="btn btn-danger btn-lg rounded-pill px-4 py-2 fw-semibold"> Create Profile </a> <a
+                href="/accounts/profiles/" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fw-semibold">
+                Browse Profiles </a> </div>
+          </div>
+        </div> <!-- Slide 2 -->
+        <div class="carousel-item position-relative"> <img src="{% static 'assets/img/vect.jpeg' %}"
+            class="d-block w-100 hero-img" alt="couple2">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+          <div class="hero-content position-absolute top-50 start-50 translate-middle text-center text-light">
+            <h1 class="hero-title fw-bold mb-3"> Meet your perfect match on <span class="text-danger">SoulMatch</span>
+            </h1>
+            <p class="hero-subtitle lead mb-4"> Trusted by thousands of happy couples </p>
+            <div class="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-3"> <a href="/register"
+                class="btn btn-danger btn-lg rounded-pill px-4 py-2 fw-semibold"> Join Now </a> <a
+                href="/accounts/profiles/" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fw-semibold">
+                Explore Profiles </a> </div>
+          </div>
+        </div> <!-- Slide 3 -->
+        <div class="carousel-item position-relative"> <img src="{% static 'assets/img/tezzy.jpg' %}"
+            class="d-block w-100 hero-img" alt="couple3">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+          <div class="hero-content position-absolute top-50 start-50 translate-middle text-center text-light">
+            <h1 class="hero-title fw-bold mb-3"> Your journey to love starts with <span
+                class="text-danger">SoulMatch</span> </h1>
+            <p class="hero-subtitle lead mb-4"> Safe, private, and personalized matchmaking </p>
+            <div class="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-3"> <a href="/register"
+                class="btn btn-danger btn-lg rounded-pill px-4 py-2 fw-semibold"> Get Started </a> <a
+                href="/accounts/profiles/" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fw-semibold"> View
+                Profiles </a> </div>
           </div>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item position-relative">
-          <img src="{% static 'assets/img/vect.jpeg' %}" class="d-block w-100 img-fluid animate-photo hero-img" alt="couple2">
-          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
-          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
-            style="max-width: 700px;">
-            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
-              Meet your perfect match on
-              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
-            </h1>
-            <p class="lead mb-4" style="color:#f8f8f8;">Trusted by thousands of happy couples</p>
-            <div>
-              <a href="/register" class="btn btn-lg me-2"
-                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                Join Now
-              </a>
-              <a href="/accounts/profiles/" class="btn btn-lg"
-                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                Explore Profiles
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item position-relative">
-          <img src="{% static 'assets/img/tezzy.jpg' %}" class="d-block w-100 img-fluid animate-photo hero-img" alt="couple3">
-          <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.55);"></div>
-          <div class="position-absolute top-50 start-50 translate-middle text-center text-light"
-            style="max-width: 700px;">
-            <h1 class="fw-bold mb-3" style="font-size: 3.2rem; text-shadow: 0 0 25px rgba(0,0,0,0.9);">
-              Your journey to love starts with
-              <span style="color:#e50914; text-shadow: 0 0 15px #e50914;">SoulMatch</span>
-            </h1>
-            <p class="lead mb-4" style="color:#f8f8f8;">Safe, private, and personalized matchmaking</p>
-            <div>
-              <a href="/register" class="btn btn-lg me-2"
-                style="background:linear-gradient(90deg,#e50914,#ff4b2b); border:none; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                Get Started
-              </a>
-              <a href="/accounts/profiles/" class="btn btn-lg"
-                style="border:2px solid white; color:white; border-radius:40px; padding:12px 30px; font-weight:600;">
-                View Profiles
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <!-- Controls -->
     </div>
   </header>
 

@@ -292,6 +292,87 @@ footer i:hover{
     transform:translateY(-3px);
 }
 
+/*  hero section */
+/* Hero carousel */
+.carousel-item {
+    position: relative;
+    min-height: 100vh;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Dark overlay */
+.carousel-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+}
+
+/* Hero content */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .carousel-item,
+    .carousel-item img {
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        top: 52%;
+        width: 92%;
+        padding: 0 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .hero-content .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 12px;
+        border-radius: 30px;
+    }
+}
+
 
 
 
