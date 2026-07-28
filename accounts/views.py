@@ -81,18 +81,19 @@ def register(request):
 @login_required
 def all_profiles(request):
 
-    my_profile = Profile.objects.get(user=request.user)
+    my_profile = Profile.objects.filter(user=request.user).first()
 
-    if my_profile.gender == "Male":
-        profiles = Profile.objects.filter(gender="Female")
+    if not my_profile:
+        profiles = Profile.objects.exclude(user=request.user)
+
+    elif my_profile.gender == "Male":
+        profiles = Profile.objects.filter(gender="Female").exclude(user=request.user)
 
     elif my_profile.gender == "Female":
-        profiles = Profile.objects.filter(gender="Male")
+        profiles = Profile.objects.filter(gender="Male").exclude(user=request.user)
 
     else:
         profiles = Profile.objects.exclude(user=request.user)
-
-    profiles = profiles.exclude(user=request.user)
 
     return render(request, 'all_profiles.html', {
         'profiles': profiles
